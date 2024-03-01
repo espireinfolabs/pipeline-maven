@@ -13,7 +13,8 @@ pipeline {
 
         stage('Build') {
         steps {
-                sh 'mvn clean deploy'
+                sh 'pwd'
+				sh 'mvn clean deploy'
               }  
         }
     }
