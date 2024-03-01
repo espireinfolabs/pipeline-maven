@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
         steps {
                 sh 'pwd'
-				sh 'cd /home/azureuser/jenkins/workspace/maven-pipeline/java-app
+				sh 'cd /home/azureuser/jenkins/workspace/maven-pipeline/java-app'
 				sh 'mvn clean deploy'
               }  
         }
