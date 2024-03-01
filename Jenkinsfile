@@ -1,43 +1,17 @@
- pipeline {
+pipeline {
     agent
 		{
-			label 'slave'
+			label 'maven-slave'
 		}
 
-        environment{
-        PASS = credentials('dockerhub-registry-credentials')
-         }
+    stages {
 
-        stages {
-
-        stage('Build') {
+        stage('Hello') {
         steps {
-                sh '''
-                                     ./jenkins/build/mvn.sh mvn -B -DskipTests clean package
-                                         ./jenkins/build/build.sh
-                                   '''
-            }
+                sh 'Java -version'
+				echo 'Get working directory'
+				sh 'pwd'
+              }  
         }
-
-    stage('Test') {
-            steps {
-                                sh './jenkins/test/test.sh mvn test'
-
-                                  }
-        }
-
-    stage('Push') {
-            steps {
-                                sh './jenkins/push/push.sh'
-                                 }
-        }
-
-        stage('Deploy') {
-            steps {
-                                sh './jenkins/deploy/deploy.sh'
-                                 }
-        }
-
     }
-
-        }
+}
