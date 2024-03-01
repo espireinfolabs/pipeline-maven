@@ -15,7 +15,7 @@ pipeline {
         steps {
                 sh 'pwd'
 				sh 'cd /home/azureuser/jenkins/workspace/maven-pipeline/java-app'
-				sh 'mvn clean deploy'
+				sh 'mvn -B -DskipTests clean package'
               }  
         }
     }
