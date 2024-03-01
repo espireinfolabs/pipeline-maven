@@ -1,16 +1,19 @@
 pipeline {
     agent
 		{
-			label 'maven-slave'
+			label 'maven'
+		}
+	
+	environment
+		{
+			PATH = "/usr/bin:$PATH"
 		}
 
     stages {
 
-        stage('Hello') {
+        stage('Build') {
         steps {
-                sh 'Java -version'
-				echo 'Get working directory'
-				sh 'pwd'
+                sh 'mvn clean deploy'
               }  
         }
     }
